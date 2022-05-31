@@ -1,0 +1,75 @@
+<%- include ('layoutes/header.ejs') %>
+
+    <div class="container justify-content-center">
+        <div class="row">
+            <div class="col text-center my-2">
+                <h3>Todas las preguntas</h3>  
+             </div>            
+        </div>
+
+        <div class="row">
+            <div class="col-12 m-5">
+                <form action="/preguntas" class="my-2 ">
+                    <div class="row">
+                        <div class="col-10">
+                            <input class="form-control" type="search" name="buscar" placeholder="Search" aria-label="Search">
+                        </div>
+                        <div class="col-2">
+                            <button class="btn btn-search btn-outline-success" type="submit">Search</button>
+                        </div>
+                    </div>
+                    
+                  </form>
+            </div>
+        </div>
+
+        <div class="row row-questions my-4 text-center">
+            <div class="col-6 text-left">
+                <p class="count"> <%= preguntas.length %> preguntas</p>
+            </div>
+
+            <div class="col-6 text-right">
+                <a href="/preguntas/formular" class="btn btn-formular">Formular una pregunta</a>
+            </div>
+        </div>
+
+        <div class="row m-3 justify-content-center">
+            <div class="col-md-7">
+                <% for(var pregunta = 0; pregunta < preguntas.length; pregunta++ ) { %>
+                    <div class="col-md-12">
+                        <div class="card m-3">
+                            <div class="card-body">
+                               <div class="row">
+                                   <div class="col-9 mr-3">
+                                        <h5 class="card-title"><a href="/preguntas/<%=preguntas[pregunta].id %>"><%= preguntas[pregunta].titulo %></a></h5>
+                                        <hr>
+                                        <p class="card-text preguntas"> <%= preguntas[pregunta].cuerpo %> </p>
+                                        <% if (preguntas[pregunta].etiquetas.length > 0) { %>
+                                            <% for(var etiqueta = 0; etiqueta < preguntas[pregunta].etiquetas.length; etiqueta++ ) { %>
+                                                <% if (preguntas[pregunta].etiquetas[etiqueta] !="") { %>
+                                                    <code>
+                                                        <a class ="etiqueta" href="/preguntas/etiquetadas/<%=preguntas[pregunta].etiquetas[etiqueta] %>" rel="noopener noreferrer">
+                                                            <%= preguntas[pregunta].etiquetas[etiqueta] %>
+                                                        </a>
+                                                    </code>
+                                                <% } %>
+                                                
+                                            <% } %>
+                                        <% } %>
+                                   </div>
+
+                                   <div class="col-3 box-autor-question">
+                                        <p class="card-text text-center"><small class="text-muted">Formulado el  <%= preguntas[pregunta].created_at %> </small></p>
+                                        <img class="avatar mb-2" src="/users/imagen/<%= preguntas[pregunta].id_autor%>" alt="Foto de perfil">
+                                        <p class="card-text text-center"><small class="text-muted"> <%= preguntas[pregunta].nombre %> </small></p>
+                                   </div>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                <%}%>
+            </div>
+        </div>
+    </div>
+  
+<%- include ('layoutes/footer.ejs') %>

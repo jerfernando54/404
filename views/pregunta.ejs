@@ -1,0 +1,88 @@
+<%- include ('layoutes/header.ejs') %>
+    
+    <div class="container">
+        <div class="row row-content m-3 justify-content-center">
+            <% for(let p = 0; p<pregunta.length; p++ ) { %>
+                <div class="col-md-6">
+                    <h2><%= pregunta[p].titulo %></h2>
+                    <p class="vista"><small>Vista <%= visitas %></small> </p class="vista">
+                    <div class="card m-2 mb-5">
+                        <div class="card-body">
+                           <div class="row">
+                               <div class="col-9 mr-3">
+                                    <p class="card-text max-length-150"><%= pregunta[p].cuerpo %></p>
+                                    <% if (pregunta[p].etiquetas.length > 0) { %>
+                                        <% for(let i = 0; i < pregunta[p].etiquetas.length; i++ ) { %>
+                                            <% if (pregunta[p].etiquetas[i] !="") { %>
+                                               <code>
+                                                    <a class ="etiqueta" href="/preguntas/etiquetadas/<%=pregunta[p].etiquetas[i] %>" rel="noopener noreferrer">
+                                                        <%= pregunta[p].etiquetas[i] %>
+                                                    </a>
+                                               </code>
+                                            <% } %>
+                                        <% } %>
+                                    <% } %>
+                                    <form action="">
+                                        <p class="votos">
+                                            <input id="radio1" type="radio" name="estrellas" value="5">
+                                            <label for="radio1">★</label>
+                                            <input id="radio2" type="radio" name="estrellas" value="4">
+                                            <label for="radio2">★</label>
+                                            <input id="radio3" type="radio" name="estrellas" value="3">
+                                            <label for="radio3">★</label>
+                                            <input id="radio4" type="radio" name="estrellas" value="2">
+                                            <label for="radio4">★</label>
+                                            <input id="radio5" type="radio" name="estrellas" value="1">
+                                            <label for="radio5">★</label>
+                                          </p>
+                                    </form>
+                                </div>
+
+                             
+                                <div class="col-3 box-autor-question">
+                                    <p class="card-text text-center"><small class="text-muted">Formulada el <%= pregunta[p].created_at%> </small></p>
+                                    <img class="avatar mb-2" src="/users/imagen/<%= pregunta[p].id_autor%>" alt="Foto de perfil">
+                                    <p class="card-text text-center"><small class="text-muted"> <%= pregunta[p].nombre %> </small></p>
+                                </div>
+                           </div>
+                        </div>
+                    </div>
+                    <% if (pregunta[p].respondida) { %>
+                        <h2 class="mb-2 text-center">Respuestas</h2>
+                        <% for(var r = 0; r<respuesta.length; r++){%>
+                            <div class="card m-2 mb-5 respuesta">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-9 mr-3">
+                                            <p class="card-text"><%= respuesta[r].texto %></p>
+                                        </div>
+        
+                                        <div class="col-3 box-autor-question">
+                                            <p class="card-text text-center"><small class="text-muted">Respondida el <%= respuesta[r].created_at %> </small></p>
+                                            <img class="avatar mb-2" src="/users/imagen/<%= respuesta[r].id_autor%>" alt="Foto de perfil">
+                                            <p class="card-text text-center"><small class="text-muted"> <%= respuesta[r].nombre %> </small></p>
+                                        </div>
+                                    </div>
+                        
+                                </div>
+                            </div>
+                       <%}%>
+                        
+                      <% } %>
+                    
+                    <form action="/preguntas/respuesta/<%= pregunta[p].id %>" method="POST">
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1"><h3>Tu respuesta</h3></label><br/>
+                            <textarea class="form-control mt-2 name="cuerpo" rows="5"></textarea>
+                            <% if (error.cuerpo) { %>
+                                <span class="error"> <%= error.cuerpo.msg %></span>
+                                <% } %>
+                        </div>
+                        <button type="submit" class="btn btn-publicar mt-3">Publica tu respuesta</button>
+                    </form>
+                </div>
+            <%}%>
+        </div>
+    </div>
+  
+<%- include ('layoutes/footer.ejs') %>

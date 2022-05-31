@@ -1,0 +1,45 @@
+<%- include ('layoutes/header.ejs') %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 m-5">
+                <form action="/preguntar/buscar" class="my-2 ">
+                    <div class="row">
+                        <div class="col-10">
+                            <input class="form-control" type="search" name="busqueda" placeholder="Search" aria-label="Search">
+                        </div>
+                        <div class="col-2">
+                            <button class="btn btn-search btn-outline-success" type="submit">Search</button>
+                        </div>
+                    </div>
+                  </form>
+            </div>
+        </div>
+
+        <div class="row user-estadistica-pr">
+            <div class="col-md-4 mr-2 users-box">
+                <div class="user-card">
+                    <img class="avatar" src="/users/imagen/<%= usuario[0].id %>" alt="Foto de perfil">
+                    <div class="card-body">
+                      <h6 class="card-title"><%= usuario[0].nombre %></h6>
+                      <p><small>Miembro desde <%= usuario[0].created_at %></small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 mr-2 users-box">
+                <P class="card-title user-estadistica mr-2">ESTADISTICAS</P>
+                <div class="row user-estadistica-pr mt-3">
+                    <div class="col-6 ">
+                        <p>Preguntas</p>
+                        <%= usuario[0].preguntas %>
+                    </div>
+                    <div class="col-6">
+                        <p>Respuestas</p>
+                        <%= usuario[0].respuestas %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+<%- include ('layoutes/footer.ejs') %>

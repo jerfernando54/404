@@ -1,0 +1,35 @@
+<%- include ('layoutes/header.ejs') %>
+
+    <div class="container">
+        <div class="row row-content m-3 justify-content-center">
+            <div class="col-md-6">
+                <form action="/preguntas/publicar" method="POST">
+                    <div class="form-group">
+                      <label>Título</label><br/>
+                      <span class="small">Sé específico, imaginate que estás haciendo la pregunta a otra persona</span>
+                      <input type="text" class="form-control" name="titulo" placeholder="¿Cuál es tu pregunta sobre progrmación de aplicaciones web?" >
+                      <% if (error.titulo) { %>
+                        <span class="error"> <%= error.titulo.msg %></span>
+                        <% } %>
+                    </div>
+
+                    <div class="form-group mt-3 mb-3">
+                      <label for="exampleFormControlTextarea1">Cuerpo</label><br/>
+                      <span class="small">Incluye toda la información que alguien necesitaría para responder tu pregunta</span>
+                      <textarea class="form-control" name="cuerpo" rows="5" ></textarea>
+                      <% if (error.cuerpo) { %>
+                        <span class="error"> <%= error.cuerpo.msg %></span>
+                        <% } %>
+                    </div>
+
+                    <div class="form-group">
+                        <label >Etiquetas</label><br/>
+                        <span class="small">Añade hasta 5 etiquetas para describir sobre qué trata tu pregunta</span>
+                        <input type="text" name="etiqueta" id="etiqueta" class="form-control" placeholder="Por ejemplo: @node@express" >
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-publicar">Publica tu pregunta</button>
+                </form>
+            </div>
+        </div>
+    </div>
+<%- include ('layoutes/footer.ejs') %>

@@ -1,0 +1,193 @@
+body {
+    font-family: 'roboto', sans-serif;
+    background-color: black;
+    color: floralwhite
+}
+
+h3, .count {
+    color:darkorange
+}
+
+.navbar-light {
+    background: black;
+}
+
+.navbar ul li a, a {
+    color: darkorange !important
+}
+
+.navbar ul li a:hover {
+    background: darkorange !important;
+    color:black !important;
+    border: 1px solid;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.navbar-brand {
+    font-size: 27px;
+    border: 1px solid;
+    padding: 5px;
+    border-radius: 12px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif !important;
+}
+
+.container-fluid{
+    padding:0;
+}
+
+.jumbotron {
+    margin: 0px auto;
+    padding: 70px 0px;
+    background-color: #D1C4E9;
+    color: dimgrey;
+}
+
+label {
+    margin-top: 5px
+}
+input[type=text] {
+    margin-bottom: 5px
+}
+
+.btn-login{
+    margin-right: 4px;
+}
+
+.btn-search {
+    border: 1px solid darkorange;
+    color: darkorange;
+}
+
+.btn-search:hover {
+    background: darkorange;
+    color: black !important;
+    border: 1px solid darkorange;
+    font-weight: bold;
+}
+
+.btn-login:hover, .btn-registrar:hover, .btn-publicar:hover, .btn-formular:hover {
+    background-color:darkorange !important;
+    color:black !important;
+    font-weight: bold !important
+}
+
+.btn-registrar, .btn-formular, .btn-publicar{
+    color: darkorange !important;
+    background:black;
+    border: 1px solid darkorange;
+}
+
+.formulado {
+    font-size: 12px;
+}
+
+.card {
+    background: black;
+    border: 1px solid darkorange
+}
+.card-text {
+    text-align: justify;
+}
+
+.card-title a {
+    text-decoration: none;
+}
+
+.respuesta {
+    border: 1px solid rgb(149, 235, 0) !important
+}
+
+.cabecera {
+    margin-top: 90px;
+    background-image: url("../img/back1.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    color: bisque !important;
+}
+
+.cabecera .lead {
+    font-weight: bold;
+    font-size: 30px;
+    text-transform: uppercase;
+}
+
+.sinresponder {
+    border: 1px solid rgb(235, 0, 0) !important
+}
+
+.avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.box-autor-question, .users-box {
+    text-align: center;
+}
+
+.user-card {
+    padding-top: 15px;
+    border: 1px solid #D1C4E9;
+    height: auto /*150px*/ ;
+
+    background: #141E30; 
+    background: -webkit-linear-gradient(to right, #243B55, #141E30); 
+    background: linear-gradient(to right, #243B55, #141E30);     
+}
+
+.etiqueta, .user-estadistica, .vista {
+    padding: 2px;
+    color: black !important;   
+    background: #E6DADA; 
+    background: -webkit-linear-gradient(to right, #274046, #E6DADA); 
+    background: linear-gradient(to right, #274046, #E6DADA); 
+
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.etiqueta {
+    margin-right: 10px;
+}
+
+.preguntas {
+    display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+}
+
+.user-estadistica,.user-estadistica-pr {
+    width: 70%;
+    margin: auto;
+}
+
+input[type = "radio"] { 
+    display:none;
+}
+
+.small {
+    color:grey;
+}
+
+.votos {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
+
+p > label:hover, p > label:hover ~ label, 
+input[type = "radio"]:checked ~ label {
+    color:orange;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    font-style: italic;
+}
+

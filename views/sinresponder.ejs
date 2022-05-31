@@ -1,0 +1,49 @@
+<%- include ('layoutes/header.ejs') %>
+
+<div class="container justify-content-center">
+    <div class="row">
+        <div class="col text-center my-2">
+            <h3 style="color: aliceblue; margin-top: 14px;">Preguntas sin Responder</h3>  
+         </div>            
+    </div>
+
+    <div class="row m-3 justify-content-center">
+        <div class="col-md-7">
+            <% for(var pregunta = 0; pregunta<preguntas.length; pregunta++ ) { %>
+
+                <% if (!preguntas[pregunta].respondida) { %>
+                    <div class="col-md-12">
+                        <div class="card m-2 sinresponder">
+                            <div class="card-body">
+                               <div class="row">
+                                <div class="col-9 mr-3">
+                                    <h5 class="card-title"><a href="/preguntas/<%=preguntas[pregunta].id %>"><%= preguntas[pregunta].titulo %></a></h5>
+                                    <hr>
+                                    <p class="card-text"><%= preguntas[pregunta].cuerpo %></p>
+                                    <% if (preguntas[pregunta].etiquetas.length > 0) { %>
+                                        <% for(var etiqueta = 0; etiqueta < preguntas[pregunta].etiquetas.length; etiqueta++ ) { %>
+                                            <% if (preguntas[pregunta].etiquetas[etiqueta] !="") { %>
+                                                <a class ="etiqueta" href="/preguntas/etiquetadas/<%=preguntas[pregunta].etiquetas[etiqueta] %>" rel="noopener noreferrer">
+                                                    <%= preguntas[pregunta].etiquetas[etiqueta] %>
+                                                </a>
+                                            <% } %>
+                                        <% } %>
+                                    <% } %>
+                               </div>
+
+                               <div class="col-3 box-autor-question">
+                                    <p class="card-text text-center"><small class="text-muted">Formulado el   </small></p>
+                                    <img class="avatar mb-2" src="/users/imagen/<%= preguntas[pregunta].id_autor%>" alt="Foto de perfil">
+                                    <p class="card-text text-center"><small class="text-muted"> <%= preguntas[pregunta].nombre %> </small></p>
+                               </div>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                  <% } %>                
+            <%}%>
+        </div>
+    </div>
+</div>
+  
+<%- include ('layoutes/footer.ejs') %>
